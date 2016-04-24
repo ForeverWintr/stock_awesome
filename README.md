@@ -1,2 +1,2 @@
 # stock_awesome
-My stockfighter implementation
+This is my implementation of the [stockfighter](https://www.stockfighter.io/) programming challenges. 
