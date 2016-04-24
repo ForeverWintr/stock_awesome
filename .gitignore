@@ -60,3 +60,12 @@ target/
 
 #Ipython Notebook
 .ipynb_checkpoints
+
+#OSX
+.DS_Store
+
+#Wing
+*.wpu
+
+secrets.py
+data
