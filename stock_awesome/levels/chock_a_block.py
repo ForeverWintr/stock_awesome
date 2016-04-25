@@ -1,7 +1,8 @@
-import market
+from stock_awesome.obj import market
 
 def main():
-    m = market.Market('EXB123456', 'TESTEX', 'FOOBAR')
+    m = market.StockAPI('IEB43718998', 'HCBEX', 'RSL')
+
 
     #r = m.buy(100000, 6500)
 
