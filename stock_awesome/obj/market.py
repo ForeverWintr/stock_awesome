@@ -9,7 +9,7 @@ class StockAPI(object):
     BASE_URL = 'https://api.stockfighter.io/ob/api'
     def __init__(self, account, venue, stock, api_key=secrets.API_KEY):
         """
-        A low level interface for the given stock and market.
+        A low level interface for the given stock on the given market.
         """
         self.account = account
         self.venue = venue
