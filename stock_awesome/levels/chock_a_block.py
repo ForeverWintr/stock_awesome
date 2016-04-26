@@ -9,31 +9,29 @@ def main():
     Algorithm: Wait for an ask, then send a fill or kill for the quantity of the ask at the ask
     price.
     """
-    m = market.StockAPI('WEB29978261', 'NOWUEX', 'BBCM')
+    m = market.StockAPI('RAJ40214463', 'SSMCEX', 'IPSO')
 
     #collection of orders placed
     orders = {}
     filled = 0
 
-    upper_limit = 3300
+    upper_limit = 2450
 
     #try to buy 100000
-    to_send = 1000
-    while to_send > 0:
+    to_buy = 100000
+    while to_buy > 0:
         quote = m.quote()
-        ask = quote.get('ask')
+        ask = quote.get('ask', 0)
+        bid = quote.get('bid')
 
-        if ask and ask < upper_limit:
-            r = m.buy(quote['askSize'], quote['ask'], order_type='fill-or-kill')
-            to_send -= 1
+        if ask < upper_limit:
+            r = m.buy(quote['askSize'], ask, order_type='fill-or-kill')
+            to_buy -= r['totalFilled']
+            print("Bought {}, {} remaining".format(r['totalFilled'], to_buy))
 
-            orders[r['id']] = r
-
-            orders = update_orders(m, orders)
-            filled += update_filled(orders)
         else:
             time.sleep(1)
-
+    print('done')
 
 
 def update_orders(m, orders):
